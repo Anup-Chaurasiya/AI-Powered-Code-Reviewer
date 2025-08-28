@@ -24,7 +24,7 @@ function App() {
     setLoading(true)        // start loading
     setResult(null)         // clear old result
     try {
-      const response = await axios.post('http://localhost:4000/ai/result', { code })
+      const response = await axios.post(`${process.env.API_URL}`, { code })
       setResult(response.data)
     } catch (error) {
       setResult("⚠️ Error fetching response")
