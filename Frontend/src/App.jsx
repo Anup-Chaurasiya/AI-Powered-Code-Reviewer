@@ -24,7 +24,7 @@ function App() {
     setLoading(true)        // start loading
     setResult(null)         // clear old result
     try {
-      const response = await axios.post(`${process.env.API_URL}`, { code })
+      const response = await axios.post(import.meta.env.VITE_API_URL, { code })
       setResult(response.data)
     } catch (error) {
       setResult("⚠️ Error fetching response")
