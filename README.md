@@ -18,6 +18,12 @@ Responsive UI with dark and light themes.
 
 Easy deployment for both frontend and backend.
 
+📸 Screenshots
+
+<img width="1920" height="1080" alt="Screenshot (11)" src="https://github.com/user-attachments/assets/716c9276-908e-4771-9418-602cab268de2" />
+
+
+
 Tech Stack
 
 Frontend: React, React Hooks, Axios, PrismJS, react-simple-code-editor, react-markdown, rehype-highlight
