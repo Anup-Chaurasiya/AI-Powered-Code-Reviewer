@@ -2,8 +2,8 @@ const aiService = require('../services/ai.service');
 
 async function getResponse(req, res) {
     try{
-        const code = req.body.code ;
-        if(!code) {
+        const code = req.body?.code;
+        if (typeof code !== 'string' || !code.trim()) {
             return res.status(400).send('code is required');
         }
         const response = await aiService(code);
