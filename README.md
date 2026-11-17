@@ -32,35 +32,65 @@ Backend: Node.js, Express (or serverless function for Vercel)
 
 Deployment: Vercel for frontend, any Node.js-compatible platform for backend
 
-Installation
+## Installation
 
-Clone the repository:
+Clone this repository:
 
-git clone https://github.com/your-username/ai-powered-code-reviewer.git
-cd ai-powered-code-reviewer
+```bash
+git clone https://github.com/Anup-Chaurasiya/AI-Powered-Code-Reviewer.git
+cd AI-Powered-Code-Reviewer
+```
 
+### Start the backend
 
-Install dependencies:
+In one terminal, install the backend dependencies:
 
-npm install
+```bash
+cd Backend
+npm ci
+```
 
+Create `Backend/.env` with your Gemini API key:
 
-Set up environment variables:
+```dotenv
+GOOGLE_GEMINI_KEY=your_gemini_api_key
+PORT=3000
+```
 
-Create a .env file in the root:
+Keep the key in the backend environment; do not put it in a `VITE_` variable or commit your `.env` file.
 
-VITE_API_BASE_URL=http://localhost:4000
+Start the API from the `Backend` directory:
 
+```bash
+node server.js
+```
 
-For production, replace http://localhost:4000 with your deployed backend URL.
+The backend listens on port 3000 by default. Visiting http://localhost:3000/ should return `Hello, world!`.
 
-Start the development server:
+### Start the frontend
 
+In a second terminal, starting from the repository root:
+
+```bash
+cd Frontend
+npm ci
+```
+
+Create `Frontend/.env`:
+
+```dotenv
+VITE_API_BASE_URL=http://localhost:3000
+```
+
+If you change the backend port, update this URL to match. For production, use your deployed backend's base URL, without the `/ai/result` suffix.
+
+Start Vite from the `Frontend` directory:
+
+```bash
 npm run dev
+```
 
-
-Open http://localhost:5173 in your browser.
-
+Open the local URL printed by Vite (normally http://localhost:5173). Restart Vite after changing `Frontend/.env`.
 
 Usage
 
@@ -76,9 +106,14 @@ Frontend: Deploy on Vercel or any static hosting service.
 
 Backend: Deploy on Railway, Render, Heroku, or Vercel serverless function.
 
-Environment Variables
-Variable	Description
-VITE_API_BASE_URL	Base URL of your backend API
+## Environment Variables
+
+| File | Variable | Description |
+| --- | --- | --- |
+| `Backend/.env` | `GOOGLE_GEMINI_KEY` | Gemini API key used by the backend |
+| `Backend/.env` | `PORT` | Optional API port; defaults to `3000` |
+| `Frontend/.env` | `VITE_API_BASE_URL` | Backend base URL, such as `http://localhost:3000` |
+
 Contributing
 
 Fork the repository.
